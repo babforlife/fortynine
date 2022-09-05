@@ -1,0 +1,3 @@
+<template>
+  <remove></remove>
+</template>
