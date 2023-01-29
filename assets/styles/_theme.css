@@ -1,22 +1,17 @@
 :root {
   --color-strip-virus: #f8bf70;
-  --color-background-virus: #e97f45;
-
   --color-strip-dopage: #e2a356;
-  --color-background-dopage: #5085c7;
-
   --color-strip-cataclysme: #888481;
-  --color-background-cataclysme: #605565;
-
   --color-strip-epidemie: #84c34e;
-  --color-background-epidemie: #c6dc39;
-
   --color-strip-drink: #be7b2c;
-  --color-background-drink: #ddbd5a;
-
   --color-strip-epidemie: #9fcf31;
-  --color-background-epidemie: #664397;
-
   --color-strip-miroir: #563979;
+  --color-background-virus: #e97f45;
+  --color-background-dopage: #5085c7;
+  --color-background-cataclysme: #605565;
+  --color-background-epidemie: #c6dc39;
+  --color-background-drink: #ddbd5a;
+  --color-background-epidemie: #664397;
   --color-background-miroir: #b9467d;
+  --font-title: 'solitreo';
 }
