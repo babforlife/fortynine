@@ -1,30 +1,28 @@
 <template>
   <div class="comp-field flex items-center gap-4 mx-4 text-center">
-    <card v-if="fieldService.getVirus()" class="flex-1" :card="fieldService.getVirus()"></card>
-    <div v-else class="flex-1">VIRUS</div>
-    <card v-if="fieldService.getDopage()" class="flex-1" :card="fieldService.getDopage()"></card>
-    <div v-else class="flex-1">DOPAGE</div>
-    <card v-if="fieldService.getEpidemie()" class="flex-1" :card="fieldService.getEpidemie()"></card>
-    <div v-else class="flex-1">EPIDEMIE</div>
+    <card class="flex-1 overflow-hidden" :card="virus" @click="emit('display-card', virus)"></card>
+    <card class="flex-1 overflow-hidden" :card="dopage" @click="emit('display-card', dopage)"></card>
+    <card class="flex-1 overflow-hidden" :card="epidemie" @click="emit('display-card', epidemie)"></card>
   </div>
 </template>
 
-<script>
-import { fieldService } from '~/services/cards/field.service'
-import { Intello } from '~/services/cards/virus/virus.model'
+<script lang="ts">
+import { on, emit } from 'shuutils'
+import { Card } from '~/models'
 
 export default {
   data() {
     return {
-      fieldService,
+      virus: new Card(),
+      dopage: new Card(),
+      epidemie: new Card(),
+      emit,
     }
   },
   beforeMount() {
-    const intello = new Intello()
-    fieldService.setVirus(intello)
-    fieldService.setDopage(intello)
-    fieldService.setEpidemie(intello)
-    fieldService.applyEffect()
+    on('set-field-virus', (virus: Card) => (this.virus = virus))
+    on('set-field-dopage', (dopage: Card) => (this.dopage = dopage))
+    on('set-field-epidemie', (epidemie: Card) => (this.epidemie = epidemie))
   },
 }
 </script>

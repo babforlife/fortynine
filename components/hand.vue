@@ -1,28 +1,23 @@
 <template>
   <div class="comp-hand flex overflow-x-auto">
-    <card v-for="(card, cardNumber) of hand.cards" :key="cardNumber" class="grow-1 h-full" :card="card"></card>
+    <card v-for="(card, cardNumber) of hand.cards" :key="cardNumber" class="grow-1 h-full" :card="card" @click="handService.playCard(card)"></card>
   </div>
 </template>
 
-<script>
-import { Intello } from '~/services/cards/virus/virus.model'
-import { fieldService } from '~/services/cards/field.service'
+<script lang="ts">
 import { Hand } from '~/models/hand.model'
+import { handService } from '~/services/hand.service'
 
 export default {
   data() {
     return {
       hand: new Hand(),
+      handService,
     }
   },
   beforeMount() {
-    this.hand = new Hand()
-    const intello = new Intello()
-
-    this.hand.cards.push(intello, intello, intello)
-
-    fieldService.setVirus(intello)
-    fieldService.applyEffect()
+    this.hand = handService.hand
+    handService.draw()
   },
 }
 </script>

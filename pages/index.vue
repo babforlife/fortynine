@@ -8,8 +8,12 @@
 </template>
 
 <script>
+import { deckService } from '~/services/deck.service'
+
 export default {
-  mounted() {},
+  beforeMount() {
+    deckService.init()
+  },
 }
 </script>
 
