@@ -1,0 +1,42 @@
+.strip-gradient {
+  background-color: var(--color-background, white);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)),
+    repeating-conic-gradient(
+      from 0deg,
+      var(--color-strip, white) 0deg 2deg,
+      transparent 2deg 10deg,
+      var(--color-strip) 10deg 13deg,
+      transparent 13deg 28deg,
+      var(--color-strip) 28deg 31deg,
+      transparent 31deg 42deg,
+      var(--color-strip) 42deg 50deg,
+      transparent 50deg 83deg,
+      var(--color-strip) 79deg 96deg,
+      transparent 96deg 120deg,
+      var(--color-strip) 120deg 130deg,
+      transparent 130deg 153deg,
+      var(--color-strip) 153deg 159deg,
+      transparent 159deg 170deg,
+      var(--color-strip) 170deg 174deg,
+      transparent 174deg 182deg,
+      var(--color-strip) 182deg 185deg,
+      transparent 185deg 190deg,
+      var(--color-strip) 190deg 193deg,
+      transparent 193deg 200deg,
+      var(--color-strip) 200deg 205deg,
+      transparent 205deg 216deg,
+      var(--color-strip) 216deg 223deg,
+      transparent 223deg 245deg,
+      var(--color-strip) 245deg 257deg,
+      transparent 257deg 290deg,
+      var(--color-strip) 290deg 300deg,
+      transparent 300deg 324deg,
+      var(--color-strip) 324deg 330deg,
+      transparent 330deg 342deg,
+      var(--color-strip) 342deg 345deg,
+      transparent 345deg 352deg,
+      var(--color-strip) 352deg 354deg,
+      transparent 354deg 360deg
+    );
+}
