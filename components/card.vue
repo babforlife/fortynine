@@ -1,9 +1,9 @@
 <template>
-  <div :group="card?.group" class="comp-card text-center border-black rounded-2xl strip-gradient py-4 w-auto flex-col flex border-2 aspect-[3/4]">
-    <div class="font-[solitreo] text-3xl">{{ card?.title }}</div>
+  <div :group="card?.group" :class="minimalClass" class="comp-card aspect-[3/4] rounded-2xl strip-gradient flex flex-col py-2 text-center border-2 border-black">
+    <div class="title text-3xl truncate">{{ card?.title }}</div>
     <div class="text-shadow">{{ card?.subTitle }}</div>
-    <div class="text-shadow mt-auto mb-1">{{ card?.points }} points</div>
-    <div class="white rounded-2xl p-2 mx-4 text-white bg-black">{{ card?.description }}</div>
+    <div v-if="!minimal" class="text-shadow mt-auto mb-1">{{ card?.points }} points</div>
+    <div v-if="!minimal" class="white rounded-2xl p-2 mx-4 overflow-hidden text-xs text-white bg-black">{{ card?.description }}</div>
   </div>
 </template>
 
@@ -13,6 +13,12 @@ import { Card } from '~/models/cards/card.model'
 export default {
   props: {
     card: Card,
+    minimal: { type: Boolean, default: false },
+  },
+  computed: {
+    minimalClass() {
+      return this.minimal ? 'aspect-auto' : ''
+    },
   },
 }
 </script>

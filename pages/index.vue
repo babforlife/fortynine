@@ -1,9 +1,9 @@
 <template>
   <div class="main flex flex-col h-full">
-    <queue class="h-1/10"></queue>
-    <field class="h-[30%]"></field>
-    <pile class="h-[30%]"></pile>
-    <hand class="h-[30%]"></hand>
+    <queue class="flex-1"></queue>
+    <field class="z-10 flex-1"></field>
+    <pile class="flex-[3]"></pile>
+    <hand class="z-10 flex-[2]"></hand>
   </div>
 </template>
 
@@ -16,9 +16,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.a {
-  font-size: 1px;
-}
-</style>

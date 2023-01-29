@@ -1,6 +1,6 @@
 <template>
-  <div class="comp-pile flex justify-center">
-    <card :card="lastCard" class="h-full"></card>
+  <div class="comp-pile relative flex justify-center">
+    <card v-for="(card, cardNumber) of pile" :key="cardNumber" :style="{ transform: orientation[cardNumber] }" :card="card" class="absolute h-full"></card>
   </div>
 </template>
 
@@ -13,16 +13,25 @@ export default {
   data() {
     return {
       pile: [] as Card[],
+      orientation: [] as string[],
       pileService,
     }
   },
-  computed: {
-    lastCard() {
-      return this.pile[this.pile.length - 1]
-    },
-  },
   beforeMount() {
-    on('push-to-pile', (card: Card) => this.pile.push(card))
+    on('push-to-pile', (card: Card) => this.add(card))
+  },
+  methods: {
+    add(card: Card) {
+      const rotation = Math.floor(Math.random() * 90) - 45
+      this.orientation.push(`rotate(${rotation}deg)`)
+      this.pile.push(card)
+    },
   },
 }
 </script>
+
+<style>
+.comp-pile {
+  transform: scale(0.8);
+}
+</style>
