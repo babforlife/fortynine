@@ -1,19 +1,11 @@
-import { Card } from '~/models/card.model'
-import { Deck } from '~/models/deck.model'
-import * as data from '~/models/set1.json'
+import { Deck, OfficialDeck } from './../models/deck.model'
+import { Card } from '~/models/cards/card.model'
 
 class DeckService {
   private deck = new Deck()
-  private deckLocation = 'models/test.json'
-
-  constructor() {
-    this.init()
-  }
 
   init() {
-    const cards = data.cards.map((card) => new Card(card))
-    this.deck.cards = this.shuffle(cards)
-    console.log('deck:', this.deck)
+    this.deck.cards = this.shuffle(new OfficialDeck().cards)
   }
 
   shuffle(cards: Card[]): Card[] {
@@ -27,5 +19,9 @@ class DeckService {
 
     return cards
   }
+
+  draw(): Card | undefined {
+    return this.deck.cards.pop()
+  }
 }
-export const deck = new DeckService()
+export const deckService = new DeckService()
