@@ -1,23 +1,23 @@
 <template>
   <div class="app h-full">
-    <displayCard v-if="card.loaded()" :card-show="card"></displayCard>
+    <displayCard v-if="display.card.loaded()" :card-show="display.card" :play="display.play"></displayCard>
     <slot />
   </div>
 </template>
 
 <script lang="ts">
 import { on } from 'shuutils'
-import { Card } from '~/models'
+import { Card, DisplayCard } from '~/models'
 
 export default {
   data() {
     return {
-      card: new Card(),
+      display: new DisplayCard(),
     }
   },
   beforeMount() {
-    on('hide-card', () => (this.card = new Card()))
-    on('display-card', (card: Card) => (this.card = card))
+    on('hide-card', () => (this.display.card = new Card()))
+    on('display-card', (displayCard: DisplayCard) => (this.display = displayCard))
   },
 }
 </script>

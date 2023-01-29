@@ -1,8 +1,8 @@
 <template>
-  <div class="comp-field flex items-center gap-4 mx-4 text-center">
-    <card class="flex-1 overflow-hidden" :card="virus" @click="emit('display-card', virus)"></card>
-    <card class="flex-1 overflow-hidden" :card="dopage" @click="emit('display-card', dopage)"></card>
-    <card class="flex-1 overflow-hidden" :card="epidemie" @click="emit('display-card', epidemie)"></card>
+  <div class="comp-field grid mx-4">
+    <card :minimal="true" :card="virus" @click="emit('display-card', { card: virus, play: false })"></card>
+    <card :minimal="true" :card="dopage" @click="emit('display-card', { card: dopage, play: false })"></card>
+    <card :minimal="true" :card="epidemie" @click="emit('display-card', { card: epidemie, play: false })"></card>
   </div>
 </template>
 
@@ -26,3 +26,10 @@ export default {
   },
 }
 </script>
+
+<style>
+.comp-field {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 1rem;
+}
+</style>
