@@ -6,7 +6,7 @@ class PileService {
 
   add(card: Card) {
     this.pile.push(card)
-    emit('push-to-pile', card)
+    emit('card-to-pile', card)
   }
 }
 export const pileService = new PileService()

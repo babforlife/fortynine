@@ -1,5 +1,5 @@
 <template>
-  <div :group="card?.group" :class="minimalClass" class="comp-card aspect-[3/4] rounded-2xl strip-gradient flex flex-col py-2 text-center border-2 border-black">
+  <div :group="card?.group" :class="{ 'aspect-auto': minimal }" class="comp-card aspect-[3/4] rounded-2xl strip-gradient flex flex-col py-2 text-center border-2 border-black">
     <div class="title text-3xl truncate">{{ card?.title }}</div>
     <div class="text-shadow">{{ card?.subTitle }}</div>
     <div v-if="!minimal" class="text-shadow mt-auto mb-1">{{ card?.points }} points</div>
@@ -14,11 +14,6 @@ export default {
   props: {
     card: Card,
     minimal: { type: Boolean, default: false },
-  },
-  computed: {
-    minimalClass() {
-      return this.minimal ? 'aspect-auto' : ''
-    },
   },
 }
 </script>
@@ -63,4 +58,3 @@ export default {
   text-shadow: 0px 0px 3px white;
 }
 </style>
-flex

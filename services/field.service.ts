@@ -1,6 +1,6 @@
 import { emit } from 'shuutils'
-import { pileService } from './pile.service'
-import { Card } from '~/models/cards/card.model'
+import { pileService } from '~/services'
+import { Card } from '~/models'
 
 class FieldService {
   virus: Card | undefined
@@ -19,17 +19,20 @@ class FieldService {
 
   setVirus(card: Card) {
     if (this.virus !== undefined) pileService.add(this.virus)
-    emit('set-field-virus', (this.virus = card))
+    this.virus = card
+    emit('virus')
   }
 
   setDopage(card: Card) {
     if (this.dopage !== undefined) pileService.add(this.dopage)
-    emit('set-field-dopage', (this.dopage = card))
+    this.dopage = card
+    emit('dopage')
   }
 
   setEpidemie(card: Card) {
     if (this.epidemie !== undefined) pileService.add(this.epidemie)
-    emit('set-field-epidemie', (this.epidemie = card))
+    this.epidemie = card
+    emit('epidemie')
   }
 
   applyVirus() {

@@ -1,14 +1,14 @@
 <template>
-  <div class="comp-field grid mx-4">
-    <card :minimal="true" :card="virus" @click="emit('display-card', { card: virus, play: false })"></card>
-    <card :minimal="true" :card="dopage" @click="emit('display-card', { card: dopage, play: false })"></card>
-    <card :minimal="true" :card="epidemie" @click="emit('display-card', { card: epidemie, play: false })"></card>
+  <div class="comp-field grid grid-cols-3 gap-4 mx-4">
+    <card :minimal="true" :card="virus" @click="emit('modal', { context: 'display-card', card: virus })"></card>
+    <card :minimal="true" :card="dopage" @click="emit('modal', { context: 'display-card', card: dopage })"></card>
+    <card :minimal="true" :card="epidemie" @click="emit('modal', { context: 'display-card', card: epidemie })"></card>
   </div>
 </template>
-
 <script lang="ts">
 import { on, emit } from 'shuutils'
 import { Card } from '~/models'
+import { fieldService } from '~/services'
 
 export default {
   data() {
@@ -20,16 +20,9 @@ export default {
     }
   },
   beforeMount() {
-    on('set-field-virus', (virus: Card) => (this.virus = virus))
-    on('set-field-dopage', (dopage: Card) => (this.dopage = dopage))
-    on('set-field-epidemie', (epidemie: Card) => (this.epidemie = epidemie))
+    on('virus', () => (this.virus = fieldService.virus!))
+    on('dopage', () => (this.dopage = fieldService.dopage!))
+    on('epidemie', () => (this.epidemie = fieldService.epidemie!))
   },
 }
 </script>
-
-<style>
-.comp-field {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-gap: 1rem;
-}
-</style>

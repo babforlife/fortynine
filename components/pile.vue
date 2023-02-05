@@ -18,7 +18,7 @@ export default {
     }
   },
   beforeMount() {
-    on('push-to-pile', (card: Card) => this.add(card))
+    on('card-to-pile', (card: Card) => this.add(card))
   },
   methods: {
     add(card: Card) {
