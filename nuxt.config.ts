@@ -11,4 +11,11 @@ export default defineNuxtConfig({
       link: [{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Solitreo' }],
     },
   },
+  build: {
+    loaders: {
+      scss: {
+        implementation: require('sass'),
+      },
+    },
+  },
 })
