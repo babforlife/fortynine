@@ -8,10 +8,11 @@
 </template>
 
 <script>
-import { deckService } from '~/services/deck.service'
+import { deckService, gameService } from '~/services'
 
 export default {
   beforeMount() {
+    gameService.init()
     deckService.init()
   },
 }

@@ -1,23 +1,12 @@
-import { Deck, OfficialDeck } from './../models/deck.model'
-import { Card } from '~/models/cards/card.model'
+import { Card, Deck, OfficialDeck } from '~/models'
+import { shuffleArray } from '~/utils'
 
 class DeckService {
   private deck = new Deck()
 
   init() {
-    this.deck.cards = this.shuffle(new OfficialDeck().cards)
-  }
-
-  shuffle(cards: Card[]): Card[] {
-    let currentIndex = cards.length
-
-    while (currentIndex !== 0) {
-      const randomIndex = Math.floor(Math.random() * currentIndex)
-      currentIndex--
-      ;[cards[currentIndex], cards[randomIndex]] = [cards[randomIndex], cards[currentIndex]]
-    }
-
-    return cards
+    this.deck.cards = new OfficialDeck().cards
+    shuffleArray(this.deck.cards)
   }
 
   draw(): Card | undefined {
