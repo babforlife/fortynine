@@ -1,12 +1,6 @@
 <template>
-  <div class="app h-full">
-    <displayCard></displayCard>
+  <div class="h-full overflow-hidden">
+    <modal></modal>
     <slot />
   </div>
 </template>
-
-<style>
-.app {
-  overflow: hidden;
-}
-</style>

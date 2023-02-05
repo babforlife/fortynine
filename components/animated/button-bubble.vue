@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center w-full">
+  <div class="">
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
       <defs>
         <filter id="gooey">
@@ -11,9 +11,9 @@
       </defs>
     </svg>
 
-    <button id="gooey-button" class="rounded-xl w-[40%]">
-      {{ text }}
-      <span class="bubbles">
+    <button id="gooey-button" class="rounded-xl w-auto">
+      <slot />
+      <span v-show="!disable" class="bubbles">
         <span class="bubble"></span>
         <span class="bubble"></span>
         <span class="bubble"></span>
@@ -32,9 +32,9 @@
 <script lang="ts">
 export default {
   props: {
-    text: {
-      type: String,
-      required: true,
+    disable: {
+      type: Boolean,
+      default: false,
     },
   },
 }
@@ -50,7 +50,7 @@ svg
     left: -4000px
 
 #gooey-button
-    padding: 0.5rem
+    padding: 0.5rem 1.5rem
     font-size: 2rem
     border: none
     color: $second

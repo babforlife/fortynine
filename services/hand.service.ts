@@ -1,14 +1,14 @@
-import { pileService } from './pile.service'
-import { deckService } from './deck.service'
-import { fieldService } from './field.service'
-import { Card } from '~/models/cards/card.model'
-import { Hand } from '~/models'
+import { emit } from 'shuutils'
+import { ModalConfiguration } from './../models/modal-configuration.model'
+import { pileService, deckService, fieldService } from '~/services'
+import { Card } from '~/models'
 
 class HandService {
-  hand = new Hand()
+  cards: Card[] = []
 
   draw() {
-    while (this.hand.cards.length !== 5) this.hand.cards.push(deckService.draw()!)
+    while (this.cards.length !== 5) this.cards.push(deckService.draw()!)
+    this.send()
   }
 
   playCard(card: Card) {
@@ -19,8 +19,12 @@ class HandService {
   }
 
   removeCard(card: Card) {
-    const cardIndex = this.hand.cards.indexOf(card)
-    if (cardIndex > -1) this.hand.cards.splice(cardIndex, 1)
+    const cardIndex = this.cards.findIndex((c) => c.description === card.description)
+    if (cardIndex > -1) this.cards.splice(cardIndex, 1)
+  }
+
+  send() {
+    emit('draw')
   }
 }
 export const handService = new HandService()
